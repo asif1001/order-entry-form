@@ -1,4 +1,4 @@
-// Import the functions you need from the SDKs you need
+// Import the necessary Firebase modules
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, query, where, getDocs } from "firebase/firestore";
 
@@ -28,6 +28,11 @@ document.getElementById('nextButton').addEventListener('click', async () => {
   const batterySerialNo = form.batterySerialNo.value;
   const date = new Date();
 
+  if (!customerName || !orderNo || !batterySerialNo) {
+    alert("Please fill in all fields before proceeding.");
+    return;
+  }
+
   try {
     await addDoc(collection(db, 'orders'), {
       srNo: Date.now(),
@@ -36,6 +41,7 @@ document.getElementById('nextButton').addEventListener('click', async () => {
       orderNo: orderNo,
       batterySerialNo: batterySerialNo
     });
+    console.log('Document successfully written!');
     // Clear battery serial no and retain customer name and order no
     form.batterySerialNo.value = '';
     currentCustomerName = customerName;
@@ -66,3 +72,6 @@ async function displayOrders(orderNo) {
     orderList.appendChild(li);
   });
 }
+
+// Initial load
+displayOrders(currentOrderNo);
