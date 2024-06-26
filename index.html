@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Entry Form</title>
+  <script defer src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <form id="orderForm">
+    <label for="customerName">Customer Name:</label>
+    <input type="text" id="customerName" name="customerName"><br><br>
+    
+    <label for="orderNo">Order No:</label>
+    <input type="text" id="orderNo" name="orderNo"><br><br>
+    
+    <label for="batterySerialNo">Battery Serial No:</label>
+    <input type="text" id="batterySerialNo" name="batterySerialNo"><br><br>
+    
+    <button type="button" id="nextButton">Next</button>
+    <button type="button" id="submitButton">Submit</button>
+  </form>
+
+  <h2>Order List</h2>
+  <ul id="orderList"></ul>
+</body>
+</html>
