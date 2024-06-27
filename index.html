@@ -69,7 +69,7 @@
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script type="text/javascript">
        (function(){
-          emailjs.init("YOUR_USER_ID"); // Replace YOUR_USER_ID with your actual EmailJS User ID
+          emailjs.init("asif.s@ekkanoo.com.bh"); // Replace YOUR_USER_ID with your actual EmailJS User ID
        })();
     </script>
 </head>
@@ -132,7 +132,7 @@
         }
 
         function sendEmail(formData) {
-            emailjs.send("service_s2ro656", "YOUR_TEMPLATE_ID", formData)
+            emailjs.send("service_s2ro656", "template_vvqmkl9", formData) // Replace YOUR_TEMPLATE_ID with your actual EmailJS Template ID
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
                     alert('Form submitted and email sent!');
