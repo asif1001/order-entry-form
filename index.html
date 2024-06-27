@@ -1,29 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Order Entry Form</title>
-  <script defer src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-  <script defer src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
-  <script defer src="app.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Entry Form</title>
 </head>
 <body>
-  <form id="orderForm">
-    <label for="customerName">Customer Name:</label>
-    <input type="text" id="customerName" name="customerName"><br><br>
+    <h1>Data Entry Form</h1>
+    <form id="dataForm">
+        <label for="srNo">Sr No:</label>
+        <input type="text" id="srNo" name="srNo" readonly><br><br>
+        
+        <label for="dateTime">Date and Time:</label>
+        <input type="text" id="dateTime" name="dateTime" readonly><br><br>
+        
+        <label for="customerName">Customer Name:</label>
+        <input type="text" id="customerName" name="customerName" required><br><br>
+        
+        <label for="orderNo">Order No:</label>
+        <input type="text" id="orderNo" name="orderNo" required><br><br>
+        
+        <label for="batterySerialNo">Battery Serial No:</label>
+        <input type="text" id="batterySerialNo" name="batterySerialNo" required><br><br>
+        
+        <button type="button" onclick="nextEntry()">Next</button>
+        <button type="submit">Submit</button>
+    </form>
     
-    <label for="orderNo">Order No:</label>
-    <input type="text" id="orderNo" name="orderNo"><br><br>
-    
-    <label for="batterySerialNo">Battery Serial No:</label>
-    <input type="text" id="batterySerialNo" name="batterySerialNo"><br><br>
-    
-    <button type="button" id="nextButton">Next</button>
-    <button type="button" id="submitButton">Submit</button>
-  </form>
+    <script>
+        let srNo = 1;
 
-  <h2>Order List</h2>
-  <ul id="orderList"></ul>
+        function autoFillFields() {
+            document.getElementById('srNo').value = srNo;
+            const now = new Date();
+            const formattedDateTime = now.toLocaleString();
+            document.getElementById('dateTime').value = formattedDateTime;
+        }
+
+        function nextEntry() {
+            srNo++;
+            autoFillFields();
+        }
+
+        document.getElementById('dataForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Form submitted!');
+            srNo++;
+            autoFillFields();
+            document.getElementById('dataForm').reset();
+        });
+
+        window.onload = autoFillFields;
+    </script>
 </body>
 </html>
