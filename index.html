@@ -4,24 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Entry Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            margin-right: 10px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button[type="submit"] {
+            background-color: #28a745;
+        }
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
 </head>
 <body>
     <h1>Data Entry Form</h1>
     <form id="dataForm">
         <label for="srNo">Sr No:</label>
-        <input type="text" id="srNo" name="srNo" readonly><br><br>
+        <input type="text" id="srNo" name="srNo" readonly>
         
         <label for="dateTime">Date and Time:</label>
-        <input type="text" id="dateTime" name="dateTime" readonly><br><br>
+        <input type="text" id="dateTime" name="dateTime" readonly>
         
         <label for="customerName">Customer Name:</label>
-        <input type="text" id="customerName" name="customerName" required><br><br>
+        <input type="text" id="customerName" name="customerName" required>
         
         <label for="orderNo">Order No:</label>
-        <input type="text" id="orderNo" name="orderNo" required><br><br>
+        <input type="text" id="orderNo" name="orderNo" required>
         
         <label for="batterySerialNo">Battery Serial No:</label>
-        <input type="text" id="batterySerialNo" name="batterySerialNo" required><br><br>
+        <input type="text" id="batterySerialNo" name="batterySerialNo" required>
         
         <button type="button" onclick="nextEntry()">Next</button>
         <button type="submit">Submit</button>
