@@ -69,7 +69,7 @@
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script type="text/javascript">
        (function(){
-          emailjs.init("asif.s@ekkanoo.com.bh"); // Replace YOUR_USER_ID with your actual EmailJS User ID
+          emailjs.init("mC5tIKwUyh2c1ZfPO"); // Initialize EmailJS with your correct Public Key
        })();
     </script>
 </head>
@@ -137,8 +137,8 @@
                     console.log('SUCCESS!', response.status, response.text);
                     alert('Form submitted and email sent!');
                 }, function(error) {
-                    console.log('FAILED...', error);
-                    console.log('Error details:', error);
+                    console.error('FAILED...', error);
+                    console.error('Error details:', error);
                     alert('Failed to send email. Please try again.');
                 });
         }
