@@ -66,6 +66,12 @@
             }
         }
     </style>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init("YOUR_USER_ID"); // Replace YOUR_USER_ID with your actual EmailJS User ID
+       })();
+    </script>
 </head>
 <body>
     <h1>Data Entry Form</h1>
@@ -125,10 +131,30 @@
             document.getElementById('dataForm').reset();
         }
 
+        function sendEmail(formData) {
+            emailjs.send("service_s2ro656", "YOUR_TEMPLATE_ID", formData)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    alert('Form submitted and email sent!');
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert('Failed to send email. Please try again.');
+                });
+        }
+
         document.getElementById('dataForm').addEventListener('submit', function(event) {
             event.preventDefault();
             saveData();
-            alert('Form submitted!');
+
+            const formData = {
+                srNo: srNo,
+                dateTime: document.getElementById('dateTime').value,
+                customerName: document.getElementById('customerName').value,
+                orderNo: document.getElementById('orderNo').value,
+                batterySerialNo: document.getElementById('batterySerialNo').value
+            };
+
+            sendEmail(formData);
             srNo++;
             autoFillFields();
             document.getElementById('dataForm').reset();
