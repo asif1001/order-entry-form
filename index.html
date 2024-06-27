@@ -112,11 +112,11 @@
             const dateTime = document.getElementById('dateTime').value;
 
             const formData = {
-                srNo: srNo,
-                dateTime: dateTime,
-                customerName: customerName,
-                orderNo: orderNo,
-                batterySerialNo: batterySerialNo
+                sr_no: srNo, // Ensure this matches the template variable
+                date_time: dateTime, // Ensure this matches the template variable
+                customer_name: customerName, // Ensure this matches the template variable
+                order_no: orderNo, // Ensure this matches the template variable
+                battery_serial_no: batterySerialNo // Ensure this matches the template variable
             };
 
             let entries = JSON.parse(localStorage.getItem('entries')) || [];
@@ -148,11 +148,11 @@
             saveData();
 
             const formData = {
-                srNo: srNo,
-                dateTime: document.getElementById('dateTime').value,
-                customerName: document.getElementById('customerName').value,
-                orderNo: document.getElementById('orderNo').value,
-                batterySerialNo: document.getElementById('batterySerialNo').value
+                sr_no: srNo, // Ensure this matches the template variable
+                date_time: document.getElementById('dateTime').value, // Ensure this matches the template variable
+                customer_name: document.getElementById('customerName').value, // Ensure this matches the template variable
+                order_no: document.getElementById('orderNo').value, // Ensure this matches the template variable
+                battery_serial_no: document.getElementById('batterySerialNo').value // Ensure this matches the template variable
             };
 
             sendEmail(formData);
