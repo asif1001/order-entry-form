@@ -97,6 +97,7 @@
     
     <script>
         let srNo = 1;
+        let entries = [];
 
         function autoFillFields() {
             document.getElementById('srNo').value = srNo;
@@ -112,23 +113,21 @@
             const dateTime = document.getElementById('dateTime').value;
 
             const formData = {
-                sr_no: srNo, // Ensure this matches the template variable
-                date_time: dateTime, // Ensure this matches the template variable
-                customer_name: customerName, // Ensure this matches the template variable
-                order_no: orderNo, // Ensure this matches the template variable
-                battery_serial_no: batterySerialNo // Ensure this matches the template variable
+                sr_no: srNo,
+                date_time: dateTime,
+                customer_name: customerName,
+                order_no: orderNo,
+                battery_serial_no: batterySerialNo
             };
 
-            let entries = JSON.parse(localStorage.getItem('entries')) || [];
             entries.push(formData);
-            localStorage.setItem('entries', JSON.stringify(entries));
+            srNo++;
         }
 
         function nextEntry() {
             saveData();
-            srNo++;
             autoFillFields();
-            document.getElementById('dataForm').reset();
+            document.getElementById('batterySerialNo').value = ''; // Clear only the battery serial number field
         }
 
         function sendEmail(formData) {
@@ -145,18 +144,30 @@
 
         document.getElementById('dataForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            saveData();
+            saveData(); // Save the last entry
 
-            const formData = {
-                sr_no: srNo, // Ensure this matches the template variable
-                date_time: document.getElementById('dateTime').value, // Ensure this matches the template variable
-                customer_name: document.getElementById('customerName').value, // Ensure this matches the template variable
-                order_no: document.getElementById('orderNo').value, // Ensure this matches the template variable
-                battery_serial_no: document.getElementById('batterySerialNo').value // Ensure this matches the template variable
+            let tableRows = '';
+            entries.forEach(entry => {
+                tableRows += `
+                    <tr>
+                        <td>${entry.sr_no}</td>
+                        <td>${entry.date_time}</td>
+                        <td>${entry.customer_name}</td>
+                        <td>${entry.order_no}</td>
+                        <td>${entry.battery_serial_no}</td>
+                    </tr>
+                `;
+            });
+
+            const emailContent = {
+                table_rows: tableRows
             };
 
-            sendEmail(formData);
-            srNo++;
+            sendEmail(emailContent);
+
+            // Reset entries and serial number
+            entries = [];
+            srNo = 1;
             autoFillFields();
             document.getElementById('dataForm').reset();
         });
