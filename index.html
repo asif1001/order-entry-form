@@ -89,7 +89,7 @@
         <input type="text" id="orderNo" name="orderNo" required>
         
         <label for="batterySerialNo">Battery Serial No:</label>
-        <input type="text" id="batterySerialNo" name="batterySerialNo" required onkeypress="handleBatterySerialNoInput(event)">
+        <input type="text" id="batterySerialNo" name="batterySerialNo" required onkeydown="handleBatterySerialNoInput(event)">
         
         <button type="button" onclick="nextEntry()">Next</button>
         <button type="submit">Submit</button>
@@ -176,7 +176,7 @@
         window.onload = autoFillFields;
 
         function handleBatterySerialNoInput(event) {
-            if (event.key === 'Enter') {
+            if (event.key === 'Enter' || event.key === 'Tab') {
                 event.preventDefault(); // Prevent form submission
                 nextEntry();
             }
