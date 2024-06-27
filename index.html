@@ -19,6 +19,7 @@
             border: 1px solid #ccc;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
         }
         label {
             display: block;
@@ -31,6 +32,7 @@
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            box-sizing: border-box;
         }
         button {
             padding: 10px 15px;
@@ -40,6 +42,7 @@
             color: white;
             cursor: pointer;
             border-radius: 4px;
+            box-sizing: border-box;
         }
         button:hover {
             background-color: #0056b3;
@@ -49,6 +52,18 @@
         }
         button[type="submit"]:hover {
             background-color: #218838;
+        }
+        @media (max-width: 600px) {
+            form {
+                padding: 10px;
+            }
+            button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            button:last-of-type {
+                margin-right: 0;
+            }
         }
     </style>
 </head>
