@@ -99,13 +99,35 @@
             document.getElementById('dateTime').value = formattedDateTime;
         }
 
+        function saveData() {
+            const customerName = document.getElementById('customerName').value;
+            const orderNo = document.getElementById('orderNo').value;
+            const batterySerialNo = document.getElementById('batterySerialNo').value;
+            const dateTime = document.getElementById('dateTime').value;
+
+            const formData = {
+                srNo: srNo,
+                dateTime: dateTime,
+                customerName: customerName,
+                orderNo: orderNo,
+                batterySerialNo: batterySerialNo
+            };
+
+            let entries = JSON.parse(localStorage.getItem('entries')) || [];
+            entries.push(formData);
+            localStorage.setItem('entries', JSON.stringify(entries));
+        }
+
         function nextEntry() {
+            saveData();
             srNo++;
             autoFillFields();
+            document.getElementById('dataForm').reset();
         }
 
         document.getElementById('dataForm').addEventListener('submit', function(event) {
             event.preventDefault();
+            saveData();
             alert('Form submitted!');
             srNo++;
             autoFillFields();
